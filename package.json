@@ -13,7 +13,8 @@
     "body-parse": "^0.1.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "mongoose": "^5.9.16"
+    "mongoose": "^5.9.16",
+    "rxjs": "^6.5.5"
   },
   "devDependencies": {
     "@types/cors": "^2.8.6",
