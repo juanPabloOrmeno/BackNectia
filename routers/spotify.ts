@@ -40,21 +40,23 @@ routerSpotify.get('/buscar', async (req: Request, res: Response) => {
         const body = req.query
         let busqueda = body.buscar
 
+        if(busqueda === undefined)
+            busqueda = ''
+
         const config = { headers: { 'Authorization': 'Bearer ' + await Token.generarToken() } }
-        let resp = await axios.get(`https://api.spotify.com/v1/search?q='${busqueda}'&type=artist&limit=10&offset=5`, config)
+        let resp = await axios.get(`https://api.spotify.com/v1/search?q='${busqueda}'&type=artist&limit=30&offset=5`, config)
 
         let respuesta: Array<object> = resp.data.artists.items
 
-
         respuesta = respuesta.map((resp: any)=>{
+            let imagen = resp.images.map((img: any)=> img.url )
             return {
-                img: resp.images,
+                img: imagen.shift(),
                 name: resp.name, 
                 url: resp.uri
             }
         })
         
-
         res.status(200).json({
             status: "ok",
             respuesta

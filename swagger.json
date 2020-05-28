@@ -1,137 +1,63 @@
 {
-    "openapi": "3.0.0",
-    "info": {
-      "version": "1.0.0",
-      "title": "Nectia",
-      "description": "microservicio de nectia",
-      "license": {
-        "name": "MIT",
-        "url": "https://opensource.org/licenses/MIT"
-      }
-    },
-    "servers": [
-      {
-        "url": "{protocol}://localhost:3000",
-        "variables": {
-          "protocol": {
-            "enum": [
-              "http"
-            ],
-            "default": "http"
-          }
-        }
-      }
-    ],
-    "components": {
-      "schemas": {
-        "Error": {
-          "type": "object",
-          "properties": {
-            "status": {
-              "type": "boolean"
-            },
-            "error": {
-              "type": "string"
-            }
-          }
-        },
-        "ResponseNuevo": {
-          "type": "object",
-          "properties": {
-            "ok": {
-              "type": "string"
-            },
-            "response": {
-              "type": "object",
-              "properties": {
-                "respuesta": {
-                  "type": "object",
-                  "properties": {
-                    "img": {
-                      "type": "string"
-                    },
-                    "name": {
-                      "type": "string"
-                    },
-                    "artists": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "ResponseBuscar": {
-          "type": "object",
-          "properties": {
-            "ok": {
-              "type": "string"
-            },
-            "response": {
-              "type": "object",
-              "properties": {
-                "respuesta": {
-                  "type": "object",
-                  "properties": {
-                    "img": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "height": {
-                            "type": "number"
-                          },
-                          "url": {
-                            "type": "string"
-                          },
-                          "width": {
-                            "type": "number"
-                          }
-                        }
-                      }
-                    },
-                    "name": {
-                      "type": "string"
-                    },
-                    "url": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "paths": {
-      "/spotify/nuevo": {
-        "get": {
-          "tags": [
-            "Spotify"
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Nectia",
+    "description": "microservicio de nectia",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "{protocol}://localhost:3000",
+      "variables": {
+        "protocol": {
+          "enum": [
+            "http"
           ],
-          "summary": "nuevos temas",
-          "responses": {
-            "200": {
-              "description": "OK",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ResponseNuevo"
-                  }
-                }
-              }
-            },
-            "500": {
-              "description": "NOK",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Error"
+          "default": "http"
+        }
+      }
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "boolean"
+          },
+          "error": {
+            "type": "string"
+          }
+        }
+      },
+      "ResponseNuevo": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "string"
+          },
+          "response": {
+            "type": "object",
+            "properties": {
+              "respuesta": {
+                "type": "object",
+                "properties": {
+                  "img": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "artists": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
                   }
                 }
               }
@@ -139,40 +65,26 @@
           }
         }
       },
-      "/spotify/buscar": {
-        "get": {
-          "tags": [
-            "Spotify"
-          ],
-          "summary": "busqueda",
-          "parameters": [
-            {
-              "name": "buscar",
-              "in": "query",
-              "required": false,
-              "description": "lo que quieres buscar.",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "OK",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ResponseBuscar"
-                  }
-                }
-              }
-            },
-            "500": {
-              "description": "NOK",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Error"
+      "ResponseBuscar": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "string"
+          },
+          "response": {
+            "type": "object",
+            "properties": {
+              "respuesta": {
+                "type": "object",
+                "properties": {
+                  "img": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string"
                   }
                 }
               }
@@ -181,4 +93,78 @@
         }
       }
     }
+  },
+  "paths": {
+    "/spotify/nuevo": {
+      "get": {
+        "tags": [
+          "Spotify"
+        ],
+        "summary": "nuevos temas",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseNuevo"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "NOK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/spotify/buscar": {
+      "get": {
+        "tags": [
+          "Spotify"
+        ],
+        "summary": "busqueda",
+        "parameters": [
+          {
+            "name": "buscar",
+            "in": "query",
+            "required": false,
+            "description": "lo que quieres buscar.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseBuscar"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "NOK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
+}
