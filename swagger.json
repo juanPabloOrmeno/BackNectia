@@ -149,7 +149,7 @@
             {
               "name": "buscar",
               "in": "query",
-              "required": true,
+              "required": false,
               "description": "lo que quieres buscar.",
               "schema": {
                 "type": "string"

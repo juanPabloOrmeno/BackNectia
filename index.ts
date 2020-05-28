@@ -13,12 +13,14 @@ server.app.use( bodyParser.urlencoded({ extended: true }));
 server.app.use( bodyParser.json());
 
 
+//cors
+server.app.use( cors({ origin: true, credentials: true }));
+
 //rutas
 server.app.use( '/spotify', routerSpotify);
 
 
-//cors
-server.app.use( cors({ origin: true, credentials: true }));
+
 
 //conectar bd
 connectMongo();
