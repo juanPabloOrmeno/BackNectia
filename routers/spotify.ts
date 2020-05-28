@@ -11,7 +11,7 @@ const routerSpotify = Router();
 routerSpotify.get('/nuevo', async (req: Request, res: Response) => {
     try {
         const config = { headers: { 'Authorization': 'Bearer ' + await Token.generarToken() } }
-        let resp = await axios.get('https://api.spotify.com/v1/browse/new-releases', config)
+        let resp = await axios.get(process.env.URL_NUEVO + '' , config)
         let respuesta: Array<object> = resp.data.albums.items
 
         respuesta = respuesta.map((resp: any)=>{
@@ -50,7 +50,7 @@ routerSpotify.get('/buscar', async (req: Request, res: Response) => {
             busqueda = ''
 
         const config = { headers: { 'Authorization': 'Bearer ' + await Token.generarToken() } }
-        let resp = await axios.get(`https://api.spotify.com/v1/search?q='${busqueda}'&type=artist&limit=30&offset=5`, config)
+        let resp = await axios.get(process.env.URL_BUSQUEDA + '' + busqueda + "&type=artist&limit=30&offset=5", config)
 
         let respuesta: Array<object> = resp.data.artists.items
 

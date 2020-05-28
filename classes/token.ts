@@ -9,8 +9,8 @@ export default class Token{
         try{
             const requestBody = {
                 grant_type: "client_credentials",
-                client_id: "5e03c04072654260a7c983e65ebf373d",
-                client_secret: "cd8820466a2a4e75aa25524d92945268"
+                client_id: process.env.CLIENT_ID,
+                client_secret: process.env.CLIENT_SECRET 
             }
             const config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
     
