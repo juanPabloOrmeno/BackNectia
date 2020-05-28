@@ -14,7 +14,7 @@ process.env.CLIENT_SECRET = process.env.CLIENT_SECRET || "cd8820466a2a4e75aa2552
 //******************************** */
 //Url nuevo
 //******************************** */
-process.env.URL_NUEVO = process.env.CURL_NUEVO || "https://api.spotify.com/v1/browse/new-releases"
+process.env.URL_NUEVO = process.env.URL_NUEVO || "https://api.spotify.com/v1/browse/new-releases"
 
 
 //******************************** */

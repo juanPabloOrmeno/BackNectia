@@ -59,7 +59,7 @@ routerSpotify.get('/buscar', async (req: Request, res: Response) => {
             return {
                 img: imagen.shift(),
                 name: resp.name, 
-                url: resp.uri
+                url:  "https://open.spotify.com/artist/" + resp.uri.replace("potify:artist:", "")
             }
         }).filter(item => typeof item.img === 'string')
           .filter(item => typeof item.name === 'string')
