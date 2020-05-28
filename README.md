@@ -8,8 +8,8 @@ Backend
 
 
 ## System
-- Node              : v8.12.0 
-- npm               : 6.9.0
+- Node              : v10.11.0 
+- npm               : 6.14.5
 
 ## instalar typescript para correr comando tsc 
 - npm install typescript -g
@@ -19,20 +19,4 @@ Backend
 
 ## iniciar proyecto, en caso de no querer partir proyecto ejecutar en consola tsc
 - npm run dev
-
-## compilar proyecto y dockerizar  (verificar nombre de package y version)
-- npm run docker:build
-
-## subir el proyecto al docker-registry
-- npm run docker:push
-
-## correr el docker local para pruebas
-- npm run docker:run
-
-## correr docker con docker-compose (Puerto expuesto 3000)
-- docker-compose -f docker-compose.yml  up -d
-
-# IMPORTANTE: 
-- Tener la variable de ambiente DB_HOST definida, se agrego al package si lo corren local solo para sismate unix
-
 
