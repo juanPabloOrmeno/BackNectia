@@ -1,6 +1,8 @@
 import { Router, Request, Response } from "express";
 import axios from 'axios';
 import Token from "../classes/token";
+import { Busqueda } from "../models/busquedas";
+import { Nueva } from "../models/nuevas";
 
 
 const routerSpotify = Router();
@@ -18,7 +20,11 @@ routerSpotify.get('/nuevo', async (req: Request, res: Response) => {
                 name: resp.name,
                 artists: resp.artists.map((artista: any)=> artista.name)
             }
-        })
+        }).filter(item => typeof item.img === 'string')
+          .filter(item => typeof item.name === 'string')
+
+
+        Nueva.create(respuesta)
 
         res.status(200).json({
             status: "ok",
@@ -55,7 +61,12 @@ routerSpotify.get('/buscar', async (req: Request, res: Response) => {
                 name: resp.name, 
                 url: resp.uri
             }
-        })
+        }).filter(item => typeof item.img === 'string')
+          .filter(item => typeof item.name === 'string')
+
+
+        Busqueda.create(respuesta)
+        
         
         res.status(200).json({
             status: "ok",
