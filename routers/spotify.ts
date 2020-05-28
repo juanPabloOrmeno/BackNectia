@@ -37,7 +37,7 @@ routerSpotify.get('/nuevo', async (req: Request, res: Response) => {
 routerSpotify.get('/buscar', async (req: Request, res: Response) => {
     try {
 
-        const body = req.body
+        const body = req.query
         let busqueda = body.buscar
 
         const config = { headers: { 'Authorization': 'Bearer ' + await Token.generarToken() } }
